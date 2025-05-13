@@ -1,0 +1,89 @@
+<!doctype html>
+<html data-theme="inkspiration">
+<head>
+  <title>Edit Art Project</title>
+  <link rel="stylesheet" href="/styles/output.css">
+</head>
+<body class="bg-base-200 text-base-content min-h-screen flex items-center justify-center p-10 bg-gradient-to-br from-[#EBDFFA] via-[#CFEDEA] to-[#F5F6F7] [cursor:url('/img/cursor.cur'),_auto]">
+
+  <div class="card bg-base-100 p-10 shadow-xl w-full max-w-4xl space-y-6">
+
+    <h2 class="text-3xl font-bold text-primary">Edit Project: <%= project.title %></h2>
+
+    <form action="/project/editProject/<%= project._id %>?_method=PUT" enctype="multipart/form-data" method="POST" class="space-y-6">
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Project Title:</span></label>
+        <input name="title" type="text" value="<%= project.title %>" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md" >
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Project Content:</span></label>
+        <textarea name="content" class="textarea textarea-bordered w-full max-w-4xl text-lg p-4 h-32 resize-none placeholder:text-lg shadow-sm rounded-md"><%= project.content %></textarea>
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Medium:</span></label>
+        <input name="medium" type="text" value="<%= project.medium %>" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md" >
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Theme:</span></label>
+        <input name="theme" type="text" value="<%= project.theme %>" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md" >
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Mood:</span></label>
+        <input name="mood" type="text" value="<%= project.mood %>" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Color Palette:</span></label>
+        <input name="colorPalette" type="text" value="<%= project.colorPalette.join(', ') %>" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Goals:</span></label>
+        <input name="goals" type="text" value="<%= project.goals.join(', ') %>" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+      </div>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Stage of Project:</span></label>
+        <input name="currentStage" type="text" value="<%= project.currentStage %>" placeholder="e.g. concept, draft, final" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+      </div>
+
+      <!-- show current uploaded image if exists -->
+      <% if (project.image) { %>
+        <div class="form-control">
+          <label class="label"><span class="label-text text-base font-bold">Current Image:</span></label>
+          <img src="<%= project.image %>" alt="Uploaded Image" class="max-w-xs max-h-60 rounded-lg shadow-md border border-base-300 object-cover mb-2" />
+          <p class="text-sm text-gray-500">Current file: <%= project.image.split('/').pop() %></p>
+        </div>
+      <% } %>
+
+      <div class="form-control">
+        <label class="label"><span class="label-text text-base font-semibold">Upload New Image (optional):</span></label>
+        <input type="file" class="file-input file-input-bordered w-full max-w-4xl" id="imageUpload" name="file">
+      </div>
+
+      <!-- toggle projects privacy w checkbox-->
+      <div class="form-control">
+        <label class="label cursor-pointer flex items-center space-x-2">
+          <input type="checkbox" name="private" <%= project.private ? "checked" : "" %> class="checkbox checkbox-sm">
+          <span class="label-text">Keep this project private?</span>
+        </label>
+      </div>
+
+      <div class="form-control">
+        <button type="submit" class="btn border-2 border-[#aa98e1] w-full text-[#7B2CBF] hover:bg-[#aa98e1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-105 transition-all duration-300 animate-slide-in-left delay-200">Save Changes</button>
+      </div>
+    </form>
+
+    <div class="text-center">
+      <a href="/profile" class="btn border-2 border-[#91dbd1] w-full text-[#5FC4B6] hover:bg-[#91dbd1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-115 transition-all duration-300 animate-slide-in-right delay-300">Cancel & Go Back</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

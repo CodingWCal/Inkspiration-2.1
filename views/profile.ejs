@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html data-theme="inkspiration">
+<head>
+  <title>👤 Ink Profile</title>
+  <link rel="stylesheet" href="/styles/output.css">
+</head>
+<body class="bg-base-200 text-base-content min-h-screen px-6 py-10 bg-gradient-to-br from-[#EBDFFA] via-[#CFEDEA] to-[#F5F6F7] [cursor:url('/img/cursor.cur'),_auto]">
+  <div class="max-w-5xl mx-auto space-y-10">
+
+    <!-- Header section w profile info n logout button right -->
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div class="flex-1 min-w-[250px]">
+        <h1 class="text-4xl font-extrabold text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 mb-4 transition-all duration-300 animate-slide-in-left delay-300">👤InkSpiration Profile</h1>
+        <p class="text-lg mt-2 hover:scale-105 transition-all duration-300 animate-slide-in-right delay-300"><strong>
+          Welcome Back!
+        </strong></p>
+        <p class="text-lg mt-2 hover:scale-105 transition-all duration-300 animate-slide-in-right delay-300"><strong>User:</strong> <%= user.userName %></p>
+        <p class="text-lg text-base-content hover:scale-105 transition-all duration-300 animate-slide-in-right delay-300"><strong>Email:</strong> <%= user.email %></p>
+      </div>
+      <div class="flex justify-end w-full sm:w-auto">
+           <a href="/feed" class="btn border-2 border-[#7B2CBF] font-bold text-[#7B2CBF] hover:bg-[#91dbd1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-110 transition-all duration-300 animate-slide-in-right delay-300"">
+          Community Gallery
+          </a>
+      </div>
+          <a href="/logout" class="btn border-2 border-[#91dbd1] font-bold text-[#7B2CBF] hover:bg-[#91dbd1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-110 transition-all duration-300 animate-slide-in-right delay-300">Logout</a>
+    </div>
+
+    <!-- Projects Section -->
+    <section>
+      <h2 class="text-3xl font-extrabold mb-6 text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 transition-all duration-300 animate-slide-in-left delay-300">Your Creative Projects:</h2>
+
+      <% if (projects.length === 0) { %>
+        <p>Every blank canvas is full of potential</p>
+      <% } %>
+
+      <div class="space-y-6">
+        <% projects.forEach(function(project) { %>
+          <div class="bg-base-100 p-6 rounded-xl shadow-md border border-base-300">
+
+            <!-- Title left & spaced Edit/Delete buttons right -->
+            <div class="flex justify-between items-start gap-4 flex-wrap mb-4">
+              <!-- underline titles n adds cursor hover plus arrow -->
+              <!-- added new onclick to show project info on dropdown -->
+              <div class="flex-1">
+                <h3 
+                  class="text-xl font-bold text-primary font-extrabold flex items-center gap-2 cursor-pointer hover:underline hover:scale-105 transition-transform duration-200 transition-all duration-300 animate-slide-in-right delay-300"
+                  onclick="toggleDetails('<%= project._id %>')"
+                >
+                  <!-- arrow spin w transition for 3 secs -->
+                  <span
+                    id="arrow-<%= project._id %>"
+                    class="inline-block transition-transform duration-300"
+                  >
+                    &#9654;
+                  </span>
+                  
+                  <%= project.title %> 
+                  <span class="text-base-content font-semibold"> — <%= project.medium %></span>
+                </h3>
+              </div>
+
+              <!-- Buttons spaced clearly n mobile responsiven hover color scale underline-->
+              <div class="flex flex-row justify-end items-center gap-4 mt-2 sm:mt-0 transition-all duration-300 animate-slide-in-right delay-300">
+                 <a href="/project/editProject/<%= project._id %>" 
+                 class="btn btn-sm btn-outline btn-primary mr-2 font-bold hover:text-[#7B2CBF] hover:font-bold hover:scale-110 hover:underline transition-all duration-300">
+                 Edit
+              </a>
+              <form action="/project/deleteProject/<%= project._id %>?_method=DELETE" method="POST">
+                <input type="hidden" name="projectId" value="<%= project._id %>">
+                <button type="submit" 
+                        class="btn btn-sm btn-outline btn-error font-bold hover:text-[#F87171] hover:font-bold hover:scale-110 hover:underline transition-all duration-300">
+                  Delete
+                </button>
+              </form>
+              </div>
+            </div>
+
+            <!-- project details in hidden displayed div togg -->
+            <div id="details-<%= project._id %>" class="mt-3 hidden flex flex-col md:flex-row gap-6">
+              <div class="flex-1">
+                <p class="mb-2 text-sm italic"><%= project.content %></p>
+                <ul class="text-sm leading-relaxed space-y-1 pl-4 list-disc">
+                  <li><strong>Current Stage:</strong> <%= project.currentStage %></li>
+                  <li><strong>Theme:</strong> <%= project.theme %></li>
+                  <li><strong>Mood:</strong> <%= project.mood %></li>
+                  <li><strong>Color Palette:</strong> <%= project.colorPalette.join(', ') %></li>
+                  <li><strong>Goals:</strong> <%= project.goals.join(', ') %></li>
+                  <li><strong>Privacy:</strong> <%= project.private ? "Private" : "Public" %></li>
+                </ul>
+              </div><!-- if statement to show pic if actually uploaded on dropdown -->
+                <% if (project.image) { %>
+                  <div class="flex-shrink-0 mt-4 md:mt-0">
+                    <img
+                      src="<%= project.image %>"
+                      alt="Uploaded Image"
+                      onclick="window.open('<%= project.image %>', '_blank')"
+                      class="w-64 h-64 rounded-lg shadow-md border border-base-300 object-contain cursor-pointer hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                <% } %>
+            </div>
+
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <!-- Add New Projects here -->
+    <section>
+      <h2 class="text-xl font-bold text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 transition-all duration-300 animate-slide-in-left delay-300"><strong>Start Something New:</strong></h2>
+      <form action="/project/createProject" enctype="multipart/form-data" method="POST" class="grid grid-cols-1 gap-4 mt-4">
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Space out form projecti inputs w tailwind div class -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Project Title:</span></label>
+          <input name="title" type="text" placeholder="(Give a Name)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md" required>
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Project content - textarea more space for words -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Project Content:</span></label>
+          <textarea name="content" placeholder="(About Project Section)" class="textarea textarea-bordered w-full max-w-4xl text-base px-4 py-2 h-28 resize-none placeholder:text-base shadow-sm rounded-md" required></textarea>
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Medium -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Medium:</span></label>
+          <input name="medium" type="text" placeholder="(e.g. Painting, Poetry)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md" required>
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Theme -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Theme:</span></label>
+          <input name="theme" type="text" placeholder="(e.g. Grief, Love)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Mood -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Mood:</span></label>
+          <input name="mood" type="text" placeholder="(e.g. Calm, Angry)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Colors -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Color Palette:</span></label>
+          <input name="colorPalette" type="text" placeholder="(Comma-separated)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Goals -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Goals:</span></label>
+          <input name="goals" type="text" placeholder="(Deadline)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- Current stage -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Project Stage:</span></label>
+          <input name="currentStage" type="text" placeholder="(e.g. Rough Sketch, Final)" class="input input-bordered w-full max-w-4xl text-base px-4 py-2 placeholder:text-base shadow-sm rounded-md">
+        </div>
+
+        <div class="form-control mb-4 flex flex-col">     <!-- File upload for pics -->
+          <label class="label mb-1"><span class="label-text text-base font-semibold">Upload Image:</span></label>
+          <input type="file" class="file-input file-input-bordered w-full max-w-4xl border-b-2 border-[#91dbd1]" id="imageUpload" name="file">
+        </div>
+
+        <!-- Make New Project Public or Private to artist user w checkbox -->
+        <div class="form-control mb-4 flex flex-col">
+          <label class="label cursor-pointer flex items-center space-x-2">
+            <input type="checkbox" name="private" value="true" class="checkbox checkbox-sm" class="checkbox checkbox-sm">
+            <span class="label-text font-bold border-b border-base-300 pb-2">Keep project private?</span>
+          </label>
+        </div>
+
+        <div class="form-control mb-6 flex flex-col">     <!-- Submit button to save -->
+          <button type="submit" class="btn border-2 border-[#aa98e1] text-[#aa98e1] font-bold hover:bg-[#aa98e1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-105 transition-all duration-300 w-full max-w-4xl">Save Art Project</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="/js/main.js"></script>   
+  <!-- links to new main js file in public for dropdown details on each project -->
+</body>
+</html>
