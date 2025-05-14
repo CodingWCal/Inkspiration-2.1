@@ -2,7 +2,7 @@
 
 A creative productivity and community platform that helps artists, writers, and dreamers track their projects and share inspiration with others.
 
-**Link to Project:** [HOSTED LINK](https://inkspiration-2-0.onrender.com/)
+**Link to Project:** [HOSTED LINK](https://inkspiration-app.onrender.com/)
 
 <!-- Screenshots (compact for readability) -->
 <p align="center">
