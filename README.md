@@ -1,4 +1,4 @@
-# 🎨 InkSpiration 2.0
+# 🎨 InkSpiration 2.1
 
 A creative productivity and community platform that helps artists, writers, and dreamers track their projects and share inspiration with others.
 
