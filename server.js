@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 2121
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
@@ -12,8 +13,11 @@ const mainRoutes = require("./routes/main");
 const commentRoutes = require("./routes/comments");
 const projectRoutes = require("./routes/projects");
 
-//Use .env file in config folder
-require("dotenv").config({ path: "./config/.env" });
+//Use .env file in config folder, had to change for render hosting settings
+// require("dotenv").config({ path: "./config/.env" });
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 // Passport config
 require("./config/passport")(passport);
@@ -61,7 +65,7 @@ app.use("/project", projectRoutes);
 
 
 //Server Running
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log("Server is running on 2121, you better catch it!");
 });
 

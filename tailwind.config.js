@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Barlow', 'sans-serif'],
+      },
       colors: {
         primary: "#7B2CBF",
         secondary: "#9D4EDD",

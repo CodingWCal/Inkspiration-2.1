@@ -4,26 +4,59 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+
     <title> 🖌️ Inkspiration</title>
-    <!-- <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/imgs/favicon-32x32.png"
-    /> -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-      crossorigin="anonymous"
-    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
       crossorigin="anonymous"
     />
+
       <link rel="stylesheet" href="/styles/output.css">
   </head>
 
-</html>
+  <body class="min-h-screen px-4 bg-gradient-to-br from-[#EBDFFA] via-[#CFEDEA] to-[#F5F6F7] [cursor:url('/img/cursor.cur'),_auto] font-sans text-gray-800">
+
+<!-- New Nav - Leon feedback to look more professional n not a project-->
+<nav class="fixed top-0 left-0 w-full bg-gradient-to-r from-[#B9DAD4] via-[#C3B3F2] to-[#B3B3C9] text-neutral shadow z-50 border-b border-base-300">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+    <!-- Left side logo/names -->
+   <a href="/" class="flex items-center space-x-2">
+          <img src="/img/InkSpiration-logo.jpg" alt="Inkspiration logo" class="h-8 w-8" />
+          <span class="text-2xl font-extrabold text-primary">InkSpiration</span>
+        </a>
+
+    <!-- right nav bar buttons using my yoinked styles n route links -->
+<div class="hidden md:flex items-center space-x-4 text-base lg:text-lg font-semibold">
+
+    <a href="/"
+     class="border-2 border-[#7B2CBF] font-bold text-[#7B2CBF] hover:bg-[#5A1D9C] hover:text-white px-4 py-1.5 rounded-md shadow-md hover:scale-110 transition-all duration-300">
+     Home
+  </a>
+
+    <a href="/profile"
+     class="border-2 border-[#7B2CBF] font-bold text-[#7B2CBF] hover:bg-[#5A1D9C] hover:text-white px-4 py-1.5 rounded-md shadow-md hover:scale-110 transition-all duration-300">
+     Profile
+  </a>
+
+  <a href="/feed"
+     class="border-2 border-[#7B2CBF] font-bold text-[#7B2CBF] hover:bg-[#5A1D9C] hover:text-white px-4 py-1.5 rounded-md shadow-md hover:scale-110 transition-all duration-300">
+     Gallery
+  </a>
+
+  <a href="/logout"
+     class="border-2 border-[#F87171] font-bold text-[#F87171] hover:bg-[#F87171] hover:text-white px-4 py-1.5 rounded-md shadow-md hover:scale-110 transition-all duration-300">
+     Logout
+  </a>
+</div>
+
+  </div>
+</nav>
+
+<!-- div to stop content overlap -->
+<div class="h-16"></div>
+

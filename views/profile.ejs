@@ -1,33 +1,25 @@
-<!DOCTYPE html>
-<html data-theme="inkspiration">
-<head>
-  <title>👤 Ink Profile</title>
-  <link rel="stylesheet" href="/styles/output.css">
-</head>
-<body class="bg-base-200 text-base-content min-h-screen px-6 py-10 bg-gradient-to-br from-[#EBDFFA] via-[#CFEDEA] to-[#F5F6F7] [cursor:url('/img/cursor.cur'),_auto]">
-  <div class="max-w-5xl mx-auto space-y-10">
+<!-- Header section nav -->
+<%- include('partials/header') %>
+
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 pt-4">
 
     <!-- Header section w profile info n logout button right -->
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div class="flex-1 min-w-[250px]">
-        <h1 class="text-4xl font-extrabold text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 mb-4 transition-all duration-300 animate-slide-in-left delay-300">👤InkSpiration Profile</h1>
+        <h1 class="text-3xl font-semibold text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 mb-4 transition-all duration-300 animate-slide-in-left delay-300">👤 Profile</h1>
         <p class="text-lg mt-2 hover:scale-105 transition-all duration-300 animate-slide-in-right delay-300"><strong>
           Welcome Back!
         </strong></p>
         <p class="text-lg mt-2 hover:scale-105 transition-all duration-300 animate-slide-in-right delay-300"><strong>User:</strong> <%= user.userName %></p>
         <p class="text-lg text-base-content hover:scale-105 transition-all duration-300 animate-slide-in-right delay-300"><strong>Email:</strong> <%= user.email %></p>
       </div>
-      <div class="flex justify-end w-full sm:w-auto">
-           <a href="/feed" class="btn border-2 border-[#7B2CBF] font-bold text-[#7B2CBF] hover:bg-[#91dbd1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-110 transition-all duration-300 animate-slide-in-right delay-300"">
-          Community Gallery
-          </a>
-      </div>
-          <a href="/logout" class="btn border-2 border-[#91dbd1] font-bold text-[#7B2CBF] hover:bg-[#91dbd1] hover:text-white hover:font-bold px-6 py-2 rounded-md shadow-md hover:scale-110 transition-all duration-300 animate-slide-in-right delay-300">Logout</a>
     </div>
+
+    <div class="mb-10"></div>
 
     <!-- Projects Section -->
     <section>
-      <h2 class="text-3xl font-extrabold mb-6 text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 transition-all duration-300 animate-slide-in-left delay-300">Your Creative Projects:</h2>
+      <h2 class="text-3xl font-semibold mb-6 text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 transition-all duration-300 animate-slide-in-left delay-300">Your Creative Projects:</h2>
 
       <% if (projects.length === 0) { %>
         <p>Every blank canvas is full of potential</p>
@@ -106,6 +98,8 @@
     </section>
 
     <!-- Add New Projects here -->
+    <div class="mb-10"></div>
+    
     <section>
       <h2 class="text-xl font-bold text-primary border-b-2 border-[#91dbd1] pb-2 mb-4 pb-2 transition-all duration-300 animate-slide-in-left delay-300"><strong>Start Something New:</strong></h2>
       <form action="/project/createProject" enctype="multipart/form-data" method="POST" class="grid grid-cols-1 gap-4 mt-4">
@@ -169,8 +163,6 @@
       </form>
     </section>
   </div>
+</div>  
 
-  <script src="/js/main.js"></script>   
-  <!-- links to new main js file in public for dropdown details on each project -->
-</body>
-</html>
+<%- include('partials/footer') %>

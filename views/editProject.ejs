@@ -1,14 +1,11 @@
-<!doctype html>
-<html data-theme="inkspiration">
-<head>
-  <title>Edit Art Project</title>
-  <link rel="stylesheet" href="/styles/output.css">
-</head>
+<%- include('partials/header') %>
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 pt-4">
+
 <body class="bg-base-200 text-base-content min-h-screen flex items-center justify-center p-10 bg-gradient-to-br from-[#EBDFFA] via-[#CFEDEA] to-[#F5F6F7] [cursor:url('/img/cursor.cur'),_auto]">
 
   <div class="card bg-base-100 p-10 shadow-xl w-full max-w-4xl space-y-6">
 
-    <h2 class="text-3xl font-bold text-primary">Edit Project: <%= project.title %></h2>
+    <h2 class="text-3xl font-bold text-primary border-b-2 border-[#91dbd1]">Edit Project: <%= project.title %></h2>
 
     <form action="/project/editProject/<%= project._id %>?_method=PUT" enctype="multipart/form-data" method="POST" class="space-y-6">
 
@@ -86,4 +83,6 @@
   </div>
 
 </body>
+
+</div>
 </html>
