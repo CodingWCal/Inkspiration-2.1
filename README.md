@@ -76,7 +76,7 @@ Every part of this app was designed to feel calming, intuitive, and community-or
 
 ## Lessons Learned:
 
-InkSpiration taught me how to think like a fullstack engineer. Looking at how models, routes, and controllers interact, and how to build systems that are both flexible and secure. Implementing file uploads with Cloudinary was a new challenge, and one I’m proud to have solved.
+InkSpiration taught me how to think like a seasoned fullstack engineer. Looking at how models, routes, and controllers interact, and how to build systems that are both flexible and secure. Implementing file uploads with Cloudinary was a new challenge, and one I’m proud to have solved.
 
 More than anything, this reminded me why I love tech: to build meaningful tools that help people express themselves and connect with others.
 
