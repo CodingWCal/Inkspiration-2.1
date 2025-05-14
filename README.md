@@ -6,22 +6,22 @@ A creative productivity and community platform that helps artists, writers, and 
 
 <!-- Screenshots (compact for readability) -->
 <p align="center">
-  <img src="https://github.com/CodingWCal/Inkspiration-2.0/blob/main/public/img/inkspiration-home-screenshot.png" width="450" alt="InkSpiration Home"/>
+  <img src="https://github.com/CodingWCal/Inkspiration-2.1/blob/main/public/img/Screenshot%202025-05-13%20221522.png" width="450" alt="InkSpiration Home"/>
   <br/><em>Home Page</em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CodingWCal/Inkspiration-2.0/blob/main/public/img/inkspiration-profile-screenshot.png" width="450" alt="InkSpiration Profile"/>
+  <img src="https://github.com/CodingWCal/Inkspiration-2.1/blob/main/public/img/Screenshot%202025-05-13%20221621.png" width="450" alt="InkSpiration Profile"/>
   <br/><em>Profile Page</em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CodingWCal/Inkspiration-2.0/blob/main/public/img/inkspiration-feed-screenshot.png" width="450" alt="InkSpiration Feed"/>
+  <img src="https://github.com/CodingWCal/Inkspiration-2.1/blob/main/public/img/Screenshot%202025-05-13%20221736.png" width="450" alt="InkSpiration Feed"/>
   <br/><em>Community Feed</em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CodingWCal/Inkspiration-2.0/blob/main/public/img/inkspiration-project-post-screenshot.png" width="450" alt="Project Post"/>
+  <img src="https://github.com/CodingWCal/Inkspiration-2.1/blob/main/public/img/Screenshot%202025-05-13%20221757.png" width="450" alt="Project Post"/>
   <br/><em>Project Post Detail</em>
 </p>
 
