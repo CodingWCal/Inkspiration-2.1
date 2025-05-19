@@ -108,5 +108,4 @@ More than anything, this reminded me why I love tech: to build meaningful tools 
 ---
 
 ## Inspiration & Credit:
-- Binary upload & Cloudinary integration adapted from [binary-upload-boom](https://github.com/100devs/binary-upload-boom)
 - Auth flow inspired by Scotch.io's Passport tutorial
